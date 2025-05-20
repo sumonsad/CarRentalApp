@@ -26,8 +26,10 @@
                             <td>
                                 @if($rental->status == 'pending')
                                     <span class="badge bg-warning">Pending</span>
-                                @elseif($rental->status == 'approved')
-                                    <span class="badge bg-success">Approved</span>
+                                @elseif($rental->status == 'completed')
+                                    <span class="badge bg-success">Completed</span>
+                                @elseif($rental->status == 'ongoing')
+                                    <span class="badge bg-success">Ongoing</span>
                                 @else
                                     <span class="badge bg-danger">Cancelled</span>
                                 @endif

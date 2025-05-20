@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\ProfileController;
@@ -10,6 +9,7 @@ use App\Http\Controllers\Frontend\CarController as FrontendCarController;
 use App\Http\Controllers\Frontend\PageController as FrontendPageController;
 use App\Http\Controllers\Admin\CustomerController as AdminCustomerController;
 use App\Http\Controllers\Frontend\RentalController as FrontendRentalController;
+
 
 
 Route::middleware([App\Http\Middleware\AdminMiddleware::class])->group(function () {
@@ -27,7 +27,7 @@ Route::middleware([App\Http\Middleware\AdminMiddleware::class])->group(function 
 
     // Route for editing a rental
     // Store rental (POST)
-    Route::post('rentals', [AdminRentalController::class, 'store'])->name('admin.rentals.store');
+    Route::post('admin/rentals', [AdminRentalController::class, 'store'])->name('admin.rentals.store');
 
     // Show a rental (GET)
     Route::get('rentals/{rental}', [AdminRentalController::class, 'show'])->name('admin.rentals.show');
@@ -51,6 +51,7 @@ Route::middleware([App\Http\Middleware\AdminMiddleware::class])->group(function 
 Route::middleware([App\Http\Middleware\CustomerMiddleware::class])->group(function () {
     Route::get('/customer/dashboard', [FrontendPageController::class, 'dashboard'])->name('customer.dashboard');
     Route::get('/customer/rentals', [FrontendRentalController::class, 'index'])->name('customer.rental');
+    Route::post('rentals', [FrontendRentalController::class, 'store'])->name('frontend.rentals.store');
 });
 
 
@@ -74,5 +75,6 @@ Route::middleware('auth')->group(function () {
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
     ->middleware('auth')
     ->name('logout');
+
 
 require __DIR__.'/auth.php';

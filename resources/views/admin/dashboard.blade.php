@@ -36,4 +36,17 @@
             </div>
         </div>
     </div>
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card border-info">
+                <div class="card-header bg-info text-white">User Information</div>
+                <div class="card-body">
+                    <p><strong>Name:</strong> {{ Auth::user()->name }}</p>
+                    <p><strong>Email:</strong> {{ Auth::user()->email }}</p>
+                    <p><strong>Phone:</strong> {{ Auth::user()->phone ?? 'N/A' }}</p>
+                    <p><strong>Joined At:</strong> {{ Auth::user()->created_at->format('F d, Y') }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

@@ -55,7 +55,7 @@ class RentalController extends Controller
         'car_id' => 'required|exists:cars,id',
         'start_date' => 'required|date|after_or_equal:' . Carbon::today()->toDateString(),
         'end_date' => 'required|date|after_or_equal:start_date',
-        'status' => 'required|in:Ongoing,Completed,Cancelled',
+        'status' => 'required|in:Pending,Ongoing,Completed,Canceled',
     ]);
 
     // Retrieve the selected car's daily rental price

@@ -65,7 +65,7 @@
                     <option value="{{ $rental->status }}" selected>
                         {{ ucfirst($rental->status) }}
                     </option>
-                    @foreach (['pending', 'ongoing', 'completed', 'cancelled'] as $status)
+                    @foreach (['pending', 'ongoing', 'completed', 'canceled'] as $status)
                         @if ($status != $rental->status)
                             <option value="{{ $status }}">{{ ucfirst($status) }}</option>
                         @endif
